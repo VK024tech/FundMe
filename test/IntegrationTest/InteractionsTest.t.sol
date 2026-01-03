@@ -22,10 +22,11 @@ contract InteractionsTest is Test {
 
     function testUserCanFundInteractions() public {
         FundFundMe fundFundMe = new FundFundMe();
+        vm.deal(address(fundFundMe), 1 ether);
         fundFundMe.fundFundMe(address(fundMe));
 
         WithdrawFundMe withdrawFundMe = new WithdrawFundMe();
-        withdrawFundMe.WithdrawFundMe(address(fundMe));
+        withdrawFundMe.withdrawFundMe(address(fundMe));
 
         assertEq(address(fundMe).balance, 0);
     }
